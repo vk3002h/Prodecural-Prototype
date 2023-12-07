@@ -13,7 +13,8 @@ public class BuildingsGenerator : MonoBehaviour
         Dictionary<Vector3Int,Direction> placableLocations = FreeSpaceFinder(roadPositions);
         foreach (var positions in placableLocations.Keys)
         {
-            Instantiate(buildingPrefab,positions, Quaternion.identity, transform);
+            var building = Instantiate(buildingPrefab,positions, Quaternion.identity, transform);
+            buildingDictionary.Add(positions, building);
         }
     }
 
@@ -38,5 +39,14 @@ public class BuildingsGenerator : MonoBehaviour
             }
         }
         return freeSpaces;
+    }
+
+    public void Reset()
+    {
+        foreach (var item in buildingDictionary.Values)
+        {
+            Destroy(item);
+        }
+        buildingDictionary.Clear();
     }
 }

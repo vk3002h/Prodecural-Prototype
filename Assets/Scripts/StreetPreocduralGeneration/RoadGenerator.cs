@@ -116,4 +116,14 @@ public class RoadGenerator : MonoBehaviour
 
         }
     }
+
+    public void Reset()
+    {
+        foreach(var item in roadDictionary.Values)
+        {
+            Destroy(item);
+        }
+        roadDictionary.Clear();
+        roadFixer = new HashSet<Vector3Int>();
+    }
 }

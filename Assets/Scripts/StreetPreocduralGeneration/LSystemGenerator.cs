@@ -38,13 +38,13 @@ public class LSystemGenerator : MonoBehaviour
         foreach (var c in word)
         {
             newword.Append(c);
-            ProcessRulesRecursivelly(newword, c, iterationIndex);
+            ProcessRules(newword, c, iterationIndex);
         }
 
         return newword.ToString();
     }
 
-    public void ProcessRulesRecursivelly(StringBuilder newword, char c, int iterationIndex)
+    public void ProcessRules(StringBuilder newword, char c, int iterationIndex)
     {
         foreach (var rule in rules)
         {

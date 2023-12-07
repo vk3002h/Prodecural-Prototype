@@ -9,7 +9,10 @@ public class streetGenerator : MonoBehaviour
     public List<Vector3> positions = new List<Vector3>();
     public RoadGenerator roadGenerator;
     public BuildingsGenerator buildingsGenerator;
+    public int streetLength;
 
+    [SerializeField]
+    [Range(0,20)]
     private int _length = 8;
     private float angle = 90;
 
@@ -31,6 +34,15 @@ public class streetGenerator : MonoBehaviour
 
     private void Start()
     {
+        GenerateStreet();
+    }
+
+    public void GenerateStreet()
+    {
+        _length = streetLength;
+        roadGenerator.Reset();
+        buildingsGenerator.Reset();
+        positions.Clear();
         var sequence = lSystem.GenerateSentence();
         Visualization(sequence);
     }

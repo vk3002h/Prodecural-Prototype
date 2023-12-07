@@ -24,14 +24,15 @@ public class BuildingPrefab : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (child.GetComponent<Generation>())
+        if (child.GetComponent<SquareBuildingGenerator>())
         {
-            child.GetComponent<Generation>().rows = length;
-            child.GetComponent<Generation>().columns = width;
-            child.GetComponent<Generation>().numberOfFloors = height;
+            child.GetComponent<SquareBuildingGenerator>().rows = length;
+            child.GetComponent<SquareBuildingGenerator>().columns = width;
+            child.GetComponent<SquareBuildingGenerator>().numberOfFloors = height;
             if (!generated)
             {
-                child.GetComponent<Generation>().Generate();
+                child.GetComponent<SquareBuildingGenerator>().Generate();
+                generated = true;
             }
             float tempX = (length / 2f) * 0.2f - 0.1f;
             float tempZ = (width / 2f) * 0.2f - 0.1f;
